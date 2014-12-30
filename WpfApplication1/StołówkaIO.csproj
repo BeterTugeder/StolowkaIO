@@ -130,6 +130,7 @@
     <AppDesigner Include="Properties\" />
     <None Include="StolowkaDS.xsc">
       <DependentUpon>StolowkaDS.xsd</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="StolowkaDS.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -138,6 +139,7 @@
     </None>
     <None Include="StolowkaDS.xss">
       <DependentUpon>StolowkaDS.xsd</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="WDOW.DBF" />
     <None Include="WKAT.DBF" />

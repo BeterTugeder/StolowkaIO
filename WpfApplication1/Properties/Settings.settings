@@ -9,6 +9,12 @@
   &lt;ProviderName&gt;Microsoft.SqlServerCe.Client.4.0&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=|DataDirectory|\Database1.sdf</Value>
+<<<<<<< HEAD
+=======
+    </Setting>
+    <Setting Name="Setting" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=D:\Dropbox\IO\Projekt\StolowkaIO\WpfApplication1\Database1.sdf</Value>
+>>>>>>> 8656fc864f7ef88bac41df155257af7c9972888a
     </Setting>
   </Settings>
 </SettingsFile>
