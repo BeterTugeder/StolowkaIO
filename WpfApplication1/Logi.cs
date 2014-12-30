@@ -58,9 +58,7 @@ namespace Stolowka
         {
             StolowkaDS DS = new StolowkaDS();
             StolowkaDSTableAdapters.LogiTableAdapter a = new StolowkaDSTableAdapters.LogiTableAdapter();
-
             a.Fill(DS.Logi);
-
             int max = 0;
             foreach (StolowkaDS.LogiRow rr in DS.Logi)
             {

@@ -83,6 +83,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DB.cs" />
     <Compile Include="StolowkaDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -138,6 +139,8 @@
     <None Include="StolowkaDS.xss">
       <DependentUpon>StolowkaDS.xsd</DependentUpon>
     </None>
+    <None Include="WDOW.DBF" />
+    <None Include="WKAT.DBF" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -146,9 +149,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database1.sdf">
+    <Compile Include="Database1.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
