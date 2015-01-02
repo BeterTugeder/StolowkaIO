@@ -16,7 +16,10 @@ namespace Stolowka
         }
 
         List<Zasob> zasoby;
-
+        public List<Zasob> Zasoby
+        {
+            get { return zasoby; }
+        }
 
         public double LiczKoszt()
         {
