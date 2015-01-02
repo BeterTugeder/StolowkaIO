@@ -37,8 +37,8 @@ namespace Stolowka
                 foreach (DataRow dr in dt.AsEnumerable())
                 {
                     StolowkaDS.WkatRow r = DS.Wkat.NewWkatRow();
-                    r.IN = (string)dr[0];
-                    r.NA = (string)dr[3];
+                    r.IN = (string)dr[0];   //kod produktu
+                    r.NA = (string)dr[3];   // nazwa produktu
                     DS.Wkat.Rows.Add(r);
                 }
                 DS.AcceptChanges();
@@ -74,13 +74,13 @@ namespace Stolowka
                 foreach (DataRow dr in dt.AsEnumerable())
                 {
                     StolowkaDS.WdowRow r = DS.Wdow.NewWdowRow();
-                    r.MG = (int)dr[0];
-                    r.SD = (int)dr[1];
-                    r.IN = (string)dr[8];
-                    r.JM = (string)dr[10];
-                    r.CE = (float)dr[11];
-                    r.IL = (int)dr[12];
-                    r.WAR = (float)r.IL * r.CE;  
+                    r.MG = (int)dr[0];   //numer magazynu
+                    r.SD = (int)dr[1];   //kartoteka magazynowa
+                    r.IN = (string)dr[8];  //kod produktu
+                    r.JM = (string)dr[10];   //jednostka miary
+                    r.CE = (float)dr[11];   //cena
+                    r.IL = (int)dr[12];    //ilosc
+                    r.WAR = (float)r.IL * r.CE;  //laczna wartosc
                     DS.Wdow.Rows.Add(r);
                 }
                 DS.AcceptChanges();
