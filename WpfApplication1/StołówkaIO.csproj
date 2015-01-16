@@ -84,12 +84,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DB.cs" />
+    <Compile Include="Masowki.cs" />
     <Compile Include="StolowkaDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StolowkaDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Uzytkownik.cs" />
+    <Compile Include="Zasob.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
