@@ -65,7 +65,7 @@ namespace Stolowka
                 if (rr.Id > max) max = rr.Id;
             }
 
-            StolowkaDS.LogiRow r = DS.Logi.NewLogiRow();
+            //StolowkaDS.LogiRow r = DS.Logi.NewLogiRow();
             /*r.Id = Id;
             r.UzytkownikId = Uzytkownik.Id;
             r.Operacja = TypOperacji;

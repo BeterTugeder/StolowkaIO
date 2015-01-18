@@ -27,9 +27,9 @@ namespace Stolowka
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        /*private void Button_Click(object sender, RoutedEventArgs e)
         {
-            /*Logi tmp = new Logi();
+            Logi tmp = new Logi();
             tmp.TypOperacji = "Dodawanie użytkownika";
             tmp.Uzytkownik = new Uzytkownik();
             tmp.Uzytkownik.Id = 0;
@@ -47,9 +47,9 @@ namespace Stolowka
 
         //http://www.microsoft.com/en-us/download/details.aspx?id=14839
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        /*private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            /*Logi tmp = new Logi();
+            Logi tmp = new Logi();
             komm.Text = "";
             foreach (StolowkaDS.LogiRow r in tmp.wyswietlanie())
             {
@@ -57,7 +57,11 @@ namespace Stolowka
             }*/
             //d:\Dropbox\IO\Projekt\StolowkaIO\WpfApplication1\WDOW.DBF
             //D:\Dropbox\IO\Projekt\StolowkaIO\WpfApplication1\WDOW.DBF
+//<<<<<<< HEAD
            /* string pth = sciezka.Text;
+=======
+            /*string pth = sciezka.Text;
+>>>>>>> 756068b6994e0cac9e941c59a1ab2bf7b0bdbf05
             try
             {
                 string connStr = @"Provider=vfpoledb;Data Source=" + pth.Substring(0, pth.LastIndexOf("\\")) + ";Collating Sequence=machine;";
@@ -80,8 +84,13 @@ namespace Stolowka
             catch (Exception ex)
             {
                 komm.Text = pth + "\n" + ex.Message;
+<<<<<<< HEAD
             }
             
+=======
+            }*/
+            /*
+>>>>>>> 756068b6994e0cac9e941c59a1ab2bf7b0bdbf05
                 string connStr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + ofdDBF.FileName.Substring(0, ofdDBF.FileName.LastIndexOf("\\")) + ";Extended Properties=dBASE IV;"; 
  
                 OleDbConnection conn = new OleDbConnection(connStr); 
@@ -93,8 +102,26 @@ namespace Stolowka
                 DataSet ds = new DataSet(); 
                 da.Fill(ds); 
                 dgvImport.DataSource = ds.Tables[0]; 
+<<<<<<< HEAD
               */
-        }
+//=======
+             
+            /*
+            Uzytkownik u = new Uzytkownik();
+            u.Login = "admin";
+            u.logowanie("admin");
+            Console.WriteLine( u.Zalogowany.ToString() );
 
-    }
+            Uzytkownik uu = new Uzytkownik();
+            uu.Login = "test";
+            uu.Imie = "Testowy";
+            uu.Nazwisko = "Tesotwe";
+            uu.Typ = false;
+            uu.dodawanie("testowe haslo");
+
+            uzytkownicy.ItemsSource = uu.lista().AsDataView();
+>>>>>>> 756068b6994e0cac9e941c59a1ab2bf7b0bdbf05
+        }*/
+
+    //}
 }

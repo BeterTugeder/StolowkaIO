@@ -4,7 +4,6 @@
         xmlns:local="clr-namespace:Stolowka" x:Class="Stolowka.MainWindow"
         Title="Stołówka" Height="680" Width="525">
     <Grid>
-
         <TextBlock HorizontalAlignment="Left" Height="23" Margin="259,0,0,0" FontSize="16" TextWrapping="Wrap" Text="Dnia roku" VerticalAlignment="Top" Width="94"/>
         <TextBlock HorizontalAlignment="Left" Padding="0,41" Height="85" Margin="0,23,0,0" TextWrapping="Wrap" Text="    Jadłospis" VerticalAlignment="Top" Width="78"/>
         <TextBlock HorizontalAlignment="Left" Height="18" FontSize="12" Margin="181,108,0,0" TextWrapping="Wrap" Text="Liczba osób korzystających z wyżywienia" VerticalAlignment="Top" Width="215"/>
@@ -51,8 +50,5 @@
         <Button Content="Imprezy masowe" HorizontalAlignment="Left" Margin="367,550,0,0" VerticalAlignment="Top" Width="150" Height="29"/>
         <Button Content="Wyloguj" HorizontalAlignment="Left" Margin="367,617,0,0" VerticalAlignment="Top" Width="150" Height="29"/>
         <Button Content="Użytkownicy" HorizontalAlignment="Left" Margin="211,617,0,0" VerticalAlignment="Top" Width="119" Height="29"/>
-
-
-
     </Grid>
 </Window>
