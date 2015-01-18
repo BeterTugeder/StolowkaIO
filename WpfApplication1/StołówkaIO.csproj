@@ -84,6 +84,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DB.cs" />
+    <Compile Include="Logowanie.xaml.cs">
+      <DependentUpon>Logowanie.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Masowki.cs" />
     <Compile Include="StolowkaDS.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -92,6 +95,10 @@
     </Compile>
     <Compile Include="Uzytkownik.cs" />
     <Compile Include="Zasob.cs" />
+    <Page Include="Logowanie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

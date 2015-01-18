@@ -29,7 +29,7 @@ namespace Stolowka
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Logi tmp = new Logi();
+            /*Logi tmp = new Logi();
             tmp.TypOperacji = "Dodawanie użytkownika";
             tmp.Uzytkownik = new Uzytkownik();
             tmp.Uzytkownik.Id = 0;
@@ -42,7 +42,7 @@ namespace Stolowka
             catch (Exception ex)
             {
                 komm.Text = ex.Message;
-            }
+            }*/
         }
 
         //http://www.microsoft.com/en-us/download/details.aspx?id=14839
@@ -57,7 +57,7 @@ namespace Stolowka
             }*/
             //d:\Dropbox\IO\Projekt\StolowkaIO\WpfApplication1\WDOW.DBF
             //D:\Dropbox\IO\Projekt\StolowkaIO\WpfApplication1\WDOW.DBF
-            string pth = sciezka.Text;
+           /* string pth = sciezka.Text;
             try
             {
                 string connStr = @"Provider=vfpoledb;Data Source=" + pth.Substring(0, pth.LastIndexOf("\\")) + ";Collating Sequence=machine;";
@@ -81,7 +81,7 @@ namespace Stolowka
             {
                 komm.Text = pth + "\n" + ex.Message;
             }
-            /*
+            
                 string connStr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + ofdDBF.FileName.Substring(0, ofdDBF.FileName.LastIndexOf("\\")) + ";Extended Properties=dBASE IV;"; 
  
                 OleDbConnection conn = new OleDbConnection(connStr); 
@@ -93,7 +93,8 @@ namespace Stolowka
                 DataSet ds = new DataSet(); 
                 da.Fill(ds); 
                 dgvImport.DataSource = ds.Tables[0]; 
-             * */
+              */
         }
+
     }
 }
