@@ -85,6 +85,10 @@
     </ApplicationDefinition>
     <Compile Include="DB.cs" />
     <Compile Include="Masowki.cs" />
+    <Compile Include="StolowkaDS.cs">
+      <DependentUpon>StolowkaDS.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="StolowkaDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

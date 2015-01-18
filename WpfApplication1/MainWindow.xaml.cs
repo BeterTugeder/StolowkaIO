@@ -57,7 +57,7 @@ namespace Stolowka
             }*/
             //d:\Dropbox\IO\Projekt\StolowkaIO\WpfApplication1\WDOW.DBF
             //D:\Dropbox\IO\Projekt\StolowkaIO\WpfApplication1\WDOW.DBF
-            string pth = sciezka.Text;
+            /*string pth = sciezka.Text;
             try
             {
                 string connStr = @"Provider=vfpoledb;Data Source=" + pth.Substring(0, pth.LastIndexOf("\\")) + ";Collating Sequence=machine;";
@@ -80,7 +80,7 @@ namespace Stolowka
             catch (Exception ex)
             {
                 komm.Text = pth + "\n" + ex.Message;
-            }
+            }*/
             /*
                 string connStr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + ofdDBF.FileName.Substring(0, ofdDBF.FileName.LastIndexOf("\\")) + ";Extended Properties=dBASE IV;"; 
  
@@ -94,6 +94,20 @@ namespace Stolowka
                 da.Fill(ds); 
                 dgvImport.DataSource = ds.Tables[0]; 
              * */
+
+            Uzytkownik u = new Uzytkownik();
+            u.Login = "admin";
+            u.logowanie("admin");
+            Console.WriteLine( u.Zalogowany.ToString() );
+
+            Uzytkownik uu = new Uzytkownik();
+            uu.Login = "test";
+            uu.Imie = "Testowy";
+            uu.Nazwisko = "Tesotwe";
+            uu.Typ = false;
+            uu.dodawanie("testowe haslo");
+
+            uzytkownicy.ItemsSource = uu.lista().AsDataView();
         }
     }
 }
