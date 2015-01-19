@@ -27,6 +27,12 @@ namespace Stolowka
             InitializeComponent();
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Logowanie r = new Logowanie();
+            r.Show();
+        }
+
         /*private void Button_Click(object sender, RoutedEventArgs e)
         {
             Logi tmp = new Logi();

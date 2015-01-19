@@ -36,7 +36,7 @@
         <TextBlock HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="227,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
         <TextBox HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="375,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
         <TextBox HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="375,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141" RenderTransformOrigin="0.511,0.824"/>
-        <TextBox HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="376,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141" RenderTransformOrigin="0.511,0.824"/>
+        <TextBox HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="376,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.511,0.824"/>
         <TextBlock HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="376,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141" RenderTransformOrigin="0.511,0.824"/>
         <DataGrid HorizontalAlignment="Left" Margin="0,192,0,0" VerticalAlignment="Top" RenderTransformOrigin="-5.083,-0.615" Height="242" Width="516"/>
         <TextBlock HorizontalAlignment="Left" Height="23" Margin="0,434,0,0" TextWrapping="Wrap" Text="Razem" VerticalAlignment="Top" Width="132"/>
@@ -46,7 +46,7 @@
         <Button Content="Importuj" HorizontalAlignment="Left" Margin="211,485,0,0" VerticalAlignment="Top" Width="119" Height="29"/>
         <Button Content="Zapisz" HorizontalAlignment="Left" Margin="211,550,0,0" VerticalAlignment="Top" Width="119" Height="29"/>
         <Calendar HorizontalAlignment="Left" Margin="0,480,0,0" VerticalAlignment="Top" Height="166" Width="178"/>
-        <Button Content="Wyświetl raport" HorizontalAlignment="Left" Margin="367,485,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="2.907,1.318" Height="29"/>
+        <Button Content="Wyświetl raport" HorizontalAlignment="Left" Margin="367,485,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="2.907,1.318" Height="29" Click="Button_Click_1"/>
         <Button Content="Imprezy masowe" HorizontalAlignment="Left" Margin="367,550,0,0" VerticalAlignment="Top" Width="150" Height="29"/>
         <Button Content="Wyloguj" HorizontalAlignment="Left" Margin="367,617,0,0" VerticalAlignment="Top" Width="150" Height="29"/>
         <Button Content="Użytkownicy" HorizontalAlignment="Left" Margin="211,617,0,0" VerticalAlignment="Top" Width="119" Height="29"/>
