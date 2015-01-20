@@ -33,6 +33,30 @@ namespace Stolowka
             r.Show();
         }
 
+        private void sniadanieWychow_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void ButtonUzytkownicy_Click(object sender, RoutedEventArgs e)
+        {
+            Window ownedWindow = new Uzytkownicy();
+            ownedWindow.Owner = this;
+            ownedWindow.Show();
+        }
+
+        private void ButtonMasowki_Click(object sender, RoutedEventArgs e)
+        {
+            Window ownedWindow = new Masowe();
+            ownedWindow.Owner = this;
+            ownedWindow.Show();
+        }
+
         /*private void Button_Click(object sender, RoutedEventArgs e)
         {
             Logi tmp = new Logi();

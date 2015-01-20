@@ -23,5 +23,47 @@ namespace Stolowka
         {
             InitializeComponent();
         }
+
+        private void ButtonDodawanieUzytkownikow_Click(object sender, RoutedEventArgs e)
+        {
+            if (ImieUzytkownika.Text.Length != 0 && NazwiskoUzytkownika.Text.Length != 0 && LoginUzytkownika.Text.Length != 0 && HasloUzytkownika.Password.Length != 0)
+            {
+                Uzytkownik user = new Uzytkownik();
+                user.Imie = ImieUzytkownika.Text;
+                user.Nazwisko = NazwiskoUzytkownika.Text;
+                user.Login = LoginUzytkownika.Text;
+                if ((bool)dupa.IsChecked)
+                {
+                    user.Typ = true;
+                }
+                else if ((bool)dupadupa.IsChecked)
+                {
+                    user.Typ = false;
+                }
+                if (user.Istnieje())
+                {
+                    MessageBox.Show("Użytkownik o podanym loginie istnieje.");
+                }
+                else
+                {
+                    user.dodawanie(HasloUzytkownika.Password);
+                    MessageBox.Show("Pomyślnie dodano użytkownika.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Wypełni wszystkie pola przed dodaniem użytkownika.");
+            }
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            StolowkaDS ds = new StolowkaDS();
+            StolowkaDSTableAdapters.UzytkownicyTableAdapter ad = new StolowkaDSTableAdapters.UzytkownicyTableAdapter();
+
+            ad.Fill(ds.Uzytkownicy);
+
+            gridView.DataContext = ds.Uzytkownicy.DefaultView;
+        }
     }
 }
