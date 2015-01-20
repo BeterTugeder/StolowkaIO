@@ -33,8 +33,8 @@ namespace Stolowka
                 zasob.Ilosc = Convert.ToDouble(IloscZasobu.Text);
                 try {
                     zasob.CenaJedn = Convert.ToDouble(CenaJednZasobu.Text.Replace('.', ','));
-                }catch(FormatException ex) {‏
-                    MessageBox.Show("Musisz podac poprana wartosc ceny!");‏
+                }catch(FormatException) {
+                    MessageBox.Show("Musisz podac poprana wartosc ceny!");
                 }
 
                 this.ListaZasobow.ItemsSource = masowka.Zasoby;
