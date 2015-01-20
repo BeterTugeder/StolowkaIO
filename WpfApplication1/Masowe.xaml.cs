@@ -19,12 +19,11 @@ namespace Stolowka
     /// </summary>
     public partial class Masowe : Window
     {
+        Masowki masowka = new Masowki();
         public Masowe()
         {
             InitializeComponent();
-            Masowki masowka = new Masowki();
         }
-
         private void ButtonDodajZasob_Click(object sender, RoutedEventArgs e)
         {
             if (NazwaZasobu.Text.Length != 0 && IloscZasobu.Text.Length != 0 && CenaJednZasobu.Text.Length != 0)
@@ -32,7 +31,14 @@ namespace Stolowka
                 Zasob zasob = new Zasob();
                 zasob.Nazwa = NazwaZasobu.Text;
                 zasob.Ilosc = Convert.ToDouble(IloscZasobu.Text);
-                zasob.CenaJedn = Convert.ToDouble(CenaJednZasobu.Text);
+                try {
+                    zasob.CenaJedn = Convert.ToDouble(CenaJednZasobu.Text.Replace('.', ','));
+                }catch(FormatException ex) {‏
+                    MessageBox.Show("Musisz podac poprana wartosc ceny!");‏
+                }
+
+                this.ListaZasobow.ItemsSource = masowka.Zasoby;
+                this.ListaZasobow.DataContext = masowka.Zasoby;
             }
         }
 

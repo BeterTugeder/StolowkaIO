@@ -19,7 +19,7 @@ namespace Stolowka
     /// </summary>
     public partial class Uzytkownicy : Window
     {
-        private void odswierz()
+        private void odswiez()
         {
             StolowkaDS ds = new StolowkaDS();
             StolowkaDSTableAdapters.UzytkownicyTableAdapter ad = new StolowkaDSTableAdapters.UzytkownicyTableAdapter();
@@ -36,7 +36,7 @@ namespace Stolowka
         public Uzytkownicy()
         {
             InitializeComponent();
-            odswierz();
+            odswiez();
         }
 
         private void ButtonDodawanieUzytkownikow_Click(object sender, RoutedEventArgs e)
@@ -63,7 +63,7 @@ namespace Stolowka
                 {
                     user.dodawanie(HasloUzytkownika.Password);
                     MessageBox.Show("Pomyślnie dodano użytkownika.");
-                    odswierz();
+                    odswiez();
                 }
             }
             else
