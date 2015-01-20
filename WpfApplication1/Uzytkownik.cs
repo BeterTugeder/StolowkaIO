@@ -96,6 +96,24 @@ namespace Stolowka
             }
         }
 
+        public bool istnieje()
+        {
+            StolowkaDS ds = new StolowkaDS();
+            StolowkaDSTableAdapters.UzytkownicyTableAdapter ad = new StolowkaDSTableAdapters.UzytkownicyTableAdapter();
+
+            ad.Fill(ds.Uzytkownicy);
+
+            DataRow[] dr = ds.Uzytkownicy.Select("login = '" + Login + "'");
+            if (dr.Length > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void wylogowanie()
         {
             zalogowany = false;
