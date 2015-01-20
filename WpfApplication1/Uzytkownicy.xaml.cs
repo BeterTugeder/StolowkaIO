@@ -26,7 +26,7 @@ namespace Stolowka
 
             ad.Fill(ds.Uzytkownicy);
 
-            gridView.DataContext = ds.Uzytkownicy.DefaultView;
+            gridView.ItemsSource = ds.Uzytkownicy.DefaultView;
         }
         public Uzytkownicy()
         {
