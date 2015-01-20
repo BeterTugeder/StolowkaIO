@@ -6,7 +6,7 @@
         <Label Content="login" FontSize ="20" HorizontalAlignment="Left" Margin="120,4,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="85,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.043,0.205"/>
         <Label Content="hasło" FontSize ="20" HorizontalAlignment="Left" Margin="120,78,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.169,-1.284"/>
-        <PasswordBox HorizontalAlignment="Left" Margin="85,115,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.06,-2.409"/>
+        <PasswordBox HorizontalAlignment="Left" Margin="85,115,0,0" VerticalAlignment="Top" Height="23" Width="120" RenderTransformOrigin="-0.06,-2.409"/>
         <Button Content="zaloguj" HorizontalAlignment="Left" Margin="108,165,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>

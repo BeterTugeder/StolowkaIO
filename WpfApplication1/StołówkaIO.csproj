@@ -88,6 +88,12 @@
       <DependentUpon>Logowanie.xaml</DependentUpon>
     </Compile>
     <Compile Include="Masowki.cs" />
+    <Compile Include="Masowe.xaml.cs">
+      <DependentUpon>Masowe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Raport.xaml.cs">
+      <DependentUpon>Raport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StolowkaDS.cs">
       <DependentUpon>StolowkaDS.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -119,6 +125,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Masowe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Raport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Uzytkownicy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

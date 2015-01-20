@@ -177,5 +177,23 @@ namespace Stolowka
 
             return ds.Uzytkownicy;
         }
+
+        public bool Istnieje()
+        {
+            StolowkaDS ds = new StolowkaDS();
+            StolowkaDSTableAdapters.UzytkownicyTableAdapter ad = new StolowkaDSTableAdapters.UzytkownicyTableAdapter();
+
+            ad.Fill(ds.Uzytkownicy);
+
+            DataRow[] dr = ds.Uzytkownicy.Select("login = '" + Login + "'");
+            if (dr.Length > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
