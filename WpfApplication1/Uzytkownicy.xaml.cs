@@ -26,7 +26,12 @@ namespace Stolowka
 
             ad.Fill(ds.Uzytkownicy);
 
+            ds.Uzytkownicy.Columns.Remove("haslo");
+
+            gridView.AutoGenerateColumns = true;
+
             gridView.ItemsSource = ds.Uzytkownicy.DefaultView;
+
         }
         public Uzytkownicy()
         {
