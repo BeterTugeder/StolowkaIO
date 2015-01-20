@@ -19,9 +19,19 @@ namespace Stolowka
     /// </summary>
     public partial class Uzytkownicy : Window
     {
+        private void odswierz()
+        {
+            StolowkaDS ds = new StolowkaDS();
+            StolowkaDSTableAdapters.UzytkownicyTableAdapter ad = new StolowkaDSTableAdapters.UzytkownicyTableAdapter();
+
+            ad.Fill(ds.Uzytkownicy);
+
+            gridView.DataContext = ds.Uzytkownicy.DefaultView;
+        }
         public Uzytkownicy()
         {
             InitializeComponent();
+            odswierz();
         }
 
         private void ButtonDodawanieUzytkownikow_Click(object sender, RoutedEventArgs e)
@@ -48,6 +58,7 @@ namespace Stolowka
                 {
                     user.dodawanie(HasloUzytkownika.Password);
                     MessageBox.Show("Pomyślnie dodano użytkownika.");
+                    odswierz();
                 }
             }
             else
@@ -58,12 +69,6 @@ namespace Stolowka
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            StolowkaDS ds = new StolowkaDS();
-            StolowkaDSTableAdapters.UzytkownicyTableAdapter ad = new StolowkaDSTableAdapters.UzytkownicyTableAdapter();
-
-            ad.Fill(ds.Uzytkownicy);
-
-            gridView.DataContext = ds.Uzytkownicy.DefaultView;
         }
     }
 }
