@@ -156,15 +156,19 @@ namespace Stolowka
 
             ad.Fill(ds.Uzytkownicy);
 
-            byte typ;
+            int typ;
             if (Typ)
                 typ = 1;
             else
                 typ = 0;
-
-            ad.Insert( Login, haslo, Imie, Nazwisko, typ );
-
-            Console.WriteLine("dodano");
+            try
+            {
+                ad.Insert(Login, haslo, Imie, Nazwisko, typ);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public StolowkaDS.UzytkownicyDataTable lista()
