@@ -37,11 +37,17 @@ namespace Stolowka
             set { osoby = value; }
         }
 
+        /*
+         * Pobiera wszystkie dane do raportu
+         * */
         public void generuj()
         {
 
         }
 
+        /*
+         * Prawdopodobnie totalnie bez sensu!
+         * */
         public void drukuj()
         {
 

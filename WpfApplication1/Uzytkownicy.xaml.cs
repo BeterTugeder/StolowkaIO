@@ -97,6 +97,7 @@ namespace Stolowka
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
         }
         void B_usun_uz_Click1(object sender, RoutedEventArgs e) { }
     }
