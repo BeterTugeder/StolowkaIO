@@ -91,6 +91,7 @@
     <Compile Include="Masowe.xaml.cs">
       <DependentUpon>Masowe.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ObliczanieKosztow.cs" />
     <Compile Include="OsobyKorzystajace.cs" />
     <Compile Include="Potrawy.cs" />
     <Compile Include="Produkt.cs" />
