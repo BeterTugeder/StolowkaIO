@@ -21,16 +21,26 @@ namespace Stolowka
     {
         private void odswiez()
         {
-            StolowkaDS ds = new StolowkaDS();
+            /*StolowkaDS ds = new StolowkaDS();
             StolowkaDSTableAdapters.UzytkownicyTableAdapter ad = new StolowkaDSTableAdapters.UzytkownicyTableAdapter();
 
             ad.Fill(ds.Uzytkownicy);
 
-            ds.Uzytkownicy.Columns.Remove("haslo");
+            ds.Uzytkownicy.Columns.Remove("haslo");*/
+
+            Uzytkownik u = new Uzytkownik();
+
+            System.Data.DataTable dt = u.lista();
+
+            dt.Columns.Remove("haslo");
 
             gridView.AutoGenerateColumns = true;
 
-            gridView.ItemsSource = ds.Uzytkownicy.DefaultView;
+
+
+            //Console.WriteLine(dt.Rows[0]["uzytkownik_id"]);
+
+            gridView.ItemsSource = dt.DefaultView;
 
             B_usun_urz.Click += B_usun_urz_Click;
 
