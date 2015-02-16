@@ -32,7 +32,7 @@ namespace Stolowka
 
         public double liczWartosc()
         {
-            return 0.0;
+            return Produkt.Cena_jedn * Ilosc;
         }
     }
 }
