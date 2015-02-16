@@ -24,13 +24,14 @@ namespace Stolowka
     {
         public MainWindow()
         {
+            Logowanie r = new Logowanie();
+            r.Show();
             InitializeComponent();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Logowanie r = new Logowanie();
-            r.Show();
+            
         }
 
         private void sniadanieWychow_TextChanged(object sender, TextChangedEventArgs e)
