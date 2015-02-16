@@ -36,8 +36,6 @@ namespace Stolowka
 
             gridView.AutoGenerateColumns = true;
 
-
-
             //Console.WriteLine(dt.Rows[0]["uzytkownik_id"]);
 
             gridView.ItemsSource = dt.DefaultView;

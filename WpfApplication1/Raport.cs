@@ -9,9 +9,33 @@ namespace Stolowka
     class Raport
     {
         private DateTime date;
+
+        public DateTime Date
+        {
+            get { return date; }
+            set { date = value; }
+        }
         private List<WydaneProdukty> wydane;
+
+        internal List<WydaneProdukty> Wydane
+        {
+            get { return wydane; }
+            set { wydane = value; }
+        }
         private List<Potrawy> potrawy;
+
+        internal List<Potrawy> Potrawy
+        {
+            get { return potrawy; }
+            set { potrawy = value; }
+        }
         private List<OsobyKorzystajace> osoby;
+
+        internal List<OsobyKorzystajace> Osoby
+        {
+            get { return osoby; }
+            set { osoby = value; }
+        }
 
         public void generuj()
         {
