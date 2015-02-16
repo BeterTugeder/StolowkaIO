@@ -91,8 +91,12 @@
     <Compile Include="Masowe.xaml.cs">
       <DependentUpon>Masowe.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Raport.xaml.cs">
-      <DependentUpon>Raport.xaml</DependentUpon>
+    <Compile Include="OsobyKorzystajace.cs" />
+    <Compile Include="Potrawy.cs" />
+    <Compile Include="Produkt.cs" />
+    <Compile Include="Raport.cs" />
+    <Compile Include="Raporty.xaml.cs">
+      <DependentUpon>Raporty.xaml</DependentUpon>
     </Compile>
     <Compile Include="StolowkaDS.cs">
       <DependentUpon>StolowkaDS.xsd</DependentUpon>
@@ -107,6 +111,7 @@
       <DependentUpon>Uzytkownicy.xaml</DependentUpon>
     </Compile>
     <Compile Include="Uzytkownik.cs" />
+    <Compile Include="WydaneProdukty.cs" />
     <Compile Include="Zasob.cs" />
     <Page Include="Logowanie.xaml">
       <SubType>Designer</SubType>
@@ -129,7 +134,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Raport.xaml">
+    <Page Include="Raporty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
