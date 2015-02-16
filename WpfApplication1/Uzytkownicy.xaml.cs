@@ -21,12 +21,18 @@ namespace Stolowka
     {
         private void odswiez()
         {
-            StolowkaDS ds = new StolowkaDS();
+            /*StolowkaDS ds = new StolowkaDS();
             StolowkaDSTableAdapters.UzytkownicyTableAdapter ad = new StolowkaDSTableAdapters.UzytkownicyTableAdapter();
 
             ad.Fill(ds.Uzytkownicy);
 
-            ds.Uzytkownicy.Columns.Remove("haslo");
+            ds.Uzytkownicy.Columns.Remove("haslo");*/
+
+            Uzytkownik u = new Uzytkownik();
+
+            System.Data.DataTable dt = u.lista();
+
+            dt.Columns.Remove("haslo");
 
             gridView.AutoGenerateColumns = true;
 
@@ -48,7 +54,7 @@ namespace Stolowka
             else
             {
                 Uzytkownik u = (Uzytkownik)gridView.SelectedItem;
-                MessageBox.Show("Jesteś pewien, że chcesz usunąć użytkownika" + u.Imie + " " + u.Nazwisko + "?", "ciongi", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBox.Show("Jesteś pewien, że chcesz usunąć użytkownika"+u.Imie+" "+ u.Nazwisko + "?","ciongi",MessageBoxButton.YesNo);
             }
         }
         public Uzytkownicy()
