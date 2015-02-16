@@ -25,8 +25,8 @@ namespace Stolowka
 
             System.Data.DataTable dt = u.lista();
 
-            dt.Columns.Remove("haslo");
-
+            dt.Columns.Remove("haslo"); 
+            
             gridView.AutoGenerateColumns = true;
 
             gridView.ItemsSource = dt.DefaultView;
