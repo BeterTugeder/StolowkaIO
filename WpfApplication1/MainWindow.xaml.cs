@@ -32,7 +32,6 @@ namespace Stolowka
 
             if (log.Zalogowany == true)
             {
-                MessageBox.Show("Zalogowano");
                 Logowanie r = new Logowanie();
                 r.Show();
                 this.Close();

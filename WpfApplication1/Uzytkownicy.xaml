@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Uzytkownicy" Height="460" Width="300">
     <Grid>
-        <DataGrid x:Name="gridView" HorizontalAlignment="Left" VerticalAlignment="Top" Height="167" Width="292" SelectionChanged="DataGrid_SelectionChanged" EnableRowVirtualization="False" CanUserDeleteRows="False"/>
-        <Button x:Name="B_usun_urz" Content="Usuń" HorizontalAlignment="Left" Margin="109,172,0,0" VerticalAlignment="Top" Width="75"/>
+        <DataGrid x:Name="gridView" HorizontalAlignment="Left" VerticalAlignment="Top" Height="167" Width="292" SelectionChanged="DataGrid_SelectionChanged" CanUserAddRows="false"/>
+        <Button x:Name="B_usun_uz" Content="Usuń" HorizontalAlignment="Left" Margin="109,172,0,0" VerticalAlignment="Top" Width="75"/>
         <Separator HorizontalAlignment="Left" Height="9" Margin="0,199,0,0" VerticalAlignment="Top" Width="292"/>
         <Label Content="Imię" FontSize = "16" HorizontalAlignment="Left" Margin="32,208,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="ImieUzytkownika" HorizontalAlignment="Left" Height="23" Margin="0,239,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>

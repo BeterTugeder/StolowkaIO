@@ -21,40 +21,39 @@ namespace Stolowka
     {
         private void odswiez()
         {
-            /*StolowkaDS ds = new StolowkaDS();
-            StolowkaDSTableAdapters.UzytkownicyTableAdapter ad = new StolowkaDSTableAdapters.UzytkownicyTableAdapter();
-
-            ad.Fill(ds.Uzytkownicy);
-
-            ds.Uzytkownicy.Columns.Remove("haslo");*/
-
             Uzytkownik u = new Uzytkownik();
 
             System.Data.DataTable dt = u.lista();
 
-            dt.Columns.Remove("haslo");
-
+            dt.Columns.Remove("haslo"); 
+            
             gridView.AutoGenerateColumns = true;
-
-            //Console.WriteLine(dt.Rows[0]["uzytkownik_id"]);
 
             gridView.ItemsSource = dt.DefaultView;
 
-            //B_usun_urz.Click += B_usun_urz_Click;
-
+            B_usun_uz.Click += B_usun_uz_Click;
         }
 
-        void B_usun_urz_Click(object sender, RoutedEventArgs e)
+        void B_usun_uz_Click(object sender, RoutedEventArgs e)
         {
-            if (gridView.SelectedItem == null)
+            object item = gridView.SelectedItem;
+            if (gridView.SelectedItem == null || (gridView.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text == "")
             {
                 MessageBox.Show("Nie wybrano użytkownika.");
                 return;
             }
             else
             {
-                Uzytkownik u = (Uzytkownik)gridView.SelectedItem;
-                MessageBox.Show("Jesteś pewien, że chcesz usunąć użytkownika"+u.Imie+" "+ u.Nazwisko + "?","ciongi",MessageBoxButton.YesNo);
+                string ID = (gridView.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                MessageBoxResult result = MessageBox.Show("Jesteś pewien, że chcesz usunąć użytkownika " + (gridView.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text + " " + (gridView.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text + "?", "Usuwanie użytkownika", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Uzytkownik u = new Uzytkownik();
+                    u.Id = Convert.ToInt32((gridView.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text);
+                    u.usuwanie();
+                    MessageBox.Show("Usunięto użytkownika.");
+                    odswiez();
+                }
             }
         }
         public Uzytkownicy()
@@ -100,5 +99,6 @@ namespace Stolowka
         {
 
         }
+        void B_usun_uz_Click1(object sender, RoutedEventArgs e) { }
     }
 }
