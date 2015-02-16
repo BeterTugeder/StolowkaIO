@@ -40,7 +40,7 @@ namespace Stolowka
 
             gridView.ItemsSource = dt.DefaultView;
 
-            B_usun_urz.Click += B_usun_urz_Click;
+            //B_usun_urz.Click += B_usun_urz_Click;
 
         }
 
