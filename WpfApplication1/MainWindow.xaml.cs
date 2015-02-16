@@ -29,10 +29,8 @@ namespace Stolowka
             Uzytkownik log = new Uzytkownik();
             log.Login = login.Text;
             log.logowanie(pass.Password);
-            /*
-             * WYWALIC MOZLIWOSC LOGOWANIA Z HASLEM I LOGINEM ADMIN ADMIN
-             * */
-            if (log.Zalogowany == true || (login.Text == "admin" && pass.Password == "admin") )
+
+            if (log.Zalogowany == true)
             {
                 MessageBox.Show("Zalogowano");
                 Logowanie r = new Logowanie();

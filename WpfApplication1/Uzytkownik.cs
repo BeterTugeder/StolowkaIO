@@ -80,6 +80,8 @@ namespace Stolowka
         {
             haslo = GetSHA512(haslo);
 
+            Console.WriteLine(haslo);
+
             StolowkaDS ds = new StolowkaDS();
             StolowkaDSTableAdapters.UzytkownicyTableAdapter ad = new StolowkaDSTableAdapters.UzytkownicyTableAdapter();
 
