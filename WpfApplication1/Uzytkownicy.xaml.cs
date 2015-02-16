@@ -30,9 +30,11 @@ namespace Stolowka
 
             gridView.AutoGenerateColumns = true;
 
-            gridView.ItemsSource = ds.Uzytkownicy.DefaultView;
+            //Console.WriteLine(dt.Rows[0]["uzytkownik_id"]);
 
-            B_usun_urz.Click += B_usun_urz_Click;
+            gridView.ItemsSource = dt.DefaultView;
+
+            //B_usun_urz.Click += B_usun_urz_Click;
 
         }
 
@@ -46,7 +48,7 @@ namespace Stolowka
             else
             {
                 Uzytkownik u = (Uzytkownik)gridView.SelectedItem;
-                MessageBox.Show("Jesteś pewien, że chcesz usunąć użytkownika"+u.Imie+" "+ u.Nazwisko + "?","ciongi",MessageBoxButton.YesNo,MessageBoxImage.Question);
+                MessageBox.Show("Jesteś pewien, że chcesz usunąć użytkownika" + u.Imie + " " + u.Nazwisko + "?", "ciongi", MessageBoxButton.YesNo, MessageBoxImage.Question);
             }
         }
         public Uzytkownicy()

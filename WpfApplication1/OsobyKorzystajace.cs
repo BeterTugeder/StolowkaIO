@@ -10,6 +10,18 @@ namespace Stolowka
     {
         private enum NAZWA { wychowankowie, personel, inne };
         private int ilosc;
+
+        public int Ilosc
+        {
+            get { return ilosc; }
+            set { ilosc = value; }
+        }
         private NAZWA nazwa;
+
+        private NAZWA Nazwa
+        {
+            get { return nazwa; }
+            set { nazwa = value; }
+        }
     }
 }
