@@ -32,6 +32,22 @@ namespace Stolowka
 
             gridView.ItemsSource = ds.Uzytkownicy.DefaultView;
 
+            B_usun_urz.Click += B_usun_urz_Click;
+
+        }
+
+        void B_usun_urz_Click(object sender, RoutedEventArgs e)
+        {
+            if (gridView.SelectedItem == null)
+            {
+                MessageBox.Show("Nie wybrano użytkownika.");
+                return;
+            }
+            else
+            {
+                Uzytkownik u = (Uzytkownik)gridView.SelectedItem;
+                MessageBox.Show("Jesteś pewien, że chcesz usunąć użytkownika"+u.Imie+" "+ u.Nazwisko + "?","ciongi",MessageBoxButton.YesNo);
+            }
         }
         public Uzytkownicy()
         {
