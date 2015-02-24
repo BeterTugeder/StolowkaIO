@@ -81,6 +81,7 @@ namespace Stolowka
                     r.CE = (float)dr[11];   //cena
                     r.IL = (int)dr[12];    //ilosc
                     r.WAR = (float)r.IL * r.CE;  //laczna wartosc
+                    r.DD = DateTime.Parse((string)dr[5]); //data
                     DS.Wdow.Rows.Add(r);
                 }
                 DS.AcceptChanges();
