@@ -8,6 +8,11 @@ namespace Stolowka
 {
     class Masowki
     {
+        public Masowki()
+        {
+            this.zasoby = new List<Zasob>();
+        }
+        
         int czasTrwania;
         public int CzasTrwania
         {
@@ -19,6 +24,7 @@ namespace Stolowka
         public List<Zasob> Zasoby
         {
             get { return zasoby; }
+            set { zasoby = value; }
         }
 
         public double LiczKoszt()

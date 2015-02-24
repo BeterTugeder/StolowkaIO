@@ -8,5 +8,6 @@
         <Label Content="hasło" FontSize ="20" HorizontalAlignment="Left" Margin="120,78,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.169,-1.284"/>
         <PasswordBox x:Name="pass" HorizontalAlignment="Left" Margin="85,115,0,0" VerticalAlignment="Top" Height="23" Width="120" RenderTransformOrigin="-0.06,-2.409"/>
         <Button Content="zaloguj" HorizontalAlignment="Left" Margin="108,165,0,0" VerticalAlignment="Top" Width="75" Click="zaloguj"/>
+        <Button Content="zamknij" HorizontalAlignment="Left" Margin="108,209,0,0" VerticalAlignment="Top" Width="75" Click="zamknij"/>
     </Grid>
 </Window>

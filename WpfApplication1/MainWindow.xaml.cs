@@ -28,12 +28,11 @@ namespace Stolowka
         {
             Uzytkownik log = new Uzytkownik();
             log.Login = login.Text;
-            log.logowanie(pass.Password);
-
+            bool typ = log.logowanie(pass.Password);
             if (log.Zalogowany == true)
             {
                 MessageBox.Show("Zalogowano");
-                Logowanie r = new Logowanie();
+                Logowanie r = new Logowanie(typ);
                 r.Show();
                 this.Close();
             }
@@ -41,6 +40,11 @@ namespace Stolowka
             {
                 MessageBox.Show("Błędny login lub hasło");
             }
+        }
+
+        private void zamknij(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

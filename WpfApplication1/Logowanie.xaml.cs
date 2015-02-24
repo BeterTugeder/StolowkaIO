@@ -22,9 +22,66 @@ namespace Stolowka
     /// </summary>
     public partial class Logowanie : Window
     {
-        public Logowanie()
+        bool typ;
+        StolowkaDS ds;
+        StolowkaDSTableAdapters.RaportTableAdapter adR;
+        StolowkaDSTableAdapters.Raport_potrawyTableAdapter adRP;
+        StolowkaDSTableAdapters.PotrawyTableAdapter adP;
+        public Logowanie(bool typ)
         {
             InitializeComponent();
+            this.typ = typ;
+            this.ds = new StolowkaDS();
+            adR = new StolowkaDSTableAdapters.RaportTableAdapter();
+            adRP = new StolowkaDSTableAdapters.Raport_potrawyTableAdapter();
+            adP = new StolowkaDSTableAdapters.PotrawyTableAdapter();
+            Data.Text = DateTime.Today.Date.ToString();
+        }
+
+        public bool istnieje(DateTime d)
+        {
+            adR.Fill(ds.Raport);
+            DataRow[] dr = ds.Raport.Select("data = '" + d + "'");
+            if (dr.Length > 0)
+                return true;
+            else
+                return false;
+        }
+
+        public void dodaj_do_bazy(string[] tab, DateTime data)
+        {
+            try
+            {
+                adR.Insert(data);
+                adR.Fill(ds.Raport);
+                adRP.Fill(ds.Raport_potrawy);
+                adP.Fill(ds.Potrawy);
+                byte typ;
+                int rR = ds.Raport.Max(x => x.raport_id);
+                int rP;
+                for (int i = 0; i < 12; i++)
+                {
+                    if (tab[i] != "")
+                    {
+                        typ = 0;
+                        if (i <= 7 && i > 3)
+                            typ = 1;
+                        else if (i <= 11 && i > 7)
+                            typ = 2;
+                        adP.Insert(tab[i], typ);
+                        adP.Fill(ds.Potrawy);
+                        rP = ds.Potrawy.Max(y => y.potrawa_id);
+                        adRP.Insert(rP, rR);
+                        adRP.Fill(ds.Raport_potrawy);
+                    }
+                }
+                MessageBox.Show("Pomyślnie dodano do bazy.");
+            }
+            catch
+            {
+                MessageBox.Show("Błąd dodawania do bazy.");
+            }
+         
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -44,9 +101,17 @@ namespace Stolowka
 
         private void ButtonUzytkownicy_Click(object sender, RoutedEventArgs e)
         {
-            Window ownedWindow = new Uzytkownicy();
-            ownedWindow.Owner = this;
-            ownedWindow.Show();
+            if (typ == true)
+            {
+                Window ownedWindow = new Uzytkownicy();
+                ownedWindow.Owner = this;
+                ownedWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Przykro mi, nie masz uprawnień administratora.");
+            }
+            
         }
 
         private void ButtonMasowki_Click(object sender, RoutedEventArgs e)
@@ -54,6 +119,85 @@ namespace Stolowka
             Window ownedWindow = new Masowe();
             ownedWindow.Owner = this;
             ownedWindow.Show();
+        }
+
+        private void ButtonWyloguj_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            m.Show();
+            this.Close();
+        }
+
+        private void zapisz(object sender, RoutedEventArgs e)
+        {
+            string[] tab = new string[12];
+            int[] tab1 = new int[9];
+            DateTime data;
+            try
+            {   
+                tab[0] = Sniadanie1.Text.ToString();
+                tab[1] = Sniadanie2.Text.ToString();
+                tab[2] = Sniadanie3.Text.ToString();
+                tab[3] = Sniadanie4.Text.ToString();
+                tab[4] = Obiad1.Text.ToString();
+                tab[5] = Obiad2.Text.ToString();
+                tab[6] = Obiad3.Text.ToString();
+                tab[7] = Obiad4.Text.ToString();
+                tab[8] = Kolacja1.Text.ToString();
+                tab[9] = Kolacja2.Text.ToString();
+                tab[10] = Kolacja3.Text.ToString();
+                tab[11] = Kolacja4.Text.ToString();
+
+                if (sniadanieWychow.Text == "")
+                    tab1[0] = 0;
+                else tab1[0] = Convert.ToInt32(sniadanieWychow.Text.ToString());
+                if (obiadWychow.Text == "")
+                    tab1[1] = 0;
+                else tab1[1] = Convert.ToInt32(obiadWychow.Text.ToString());
+                if (kolacjaWychow.Text == "")
+                    tab1[2] = 0;
+                else tab1[2] = Convert.ToInt32(kolacjaWychow.Text.ToString());
+
+                if (sniadaniePersonel.Text == "")
+                    tab1[3] = 0;
+                else tab1[3] = Convert.ToInt32(sniadaniePersonel.Text.ToString());
+                if (obiadPersonel.Text == "")
+                    tab1[4] = 0;
+                else tab1[4] = Convert.ToInt32(obiadPersonel.Text.ToString());
+                if (kolacjaPersonel.Text == "")
+                    tab1[5] = 0;
+                else tab1[5] = Convert.ToInt32(kolacjaPersonel.Text.ToString());
+
+                if (sniadanieInni.Text == "")
+                    tab1[6] = 0;
+                else tab1[6] = Convert.ToInt32(sniadanieInni.Text.ToString());
+                if (obiadInni.Text == "")
+                    tab1[7] = 0;
+                else tab1[7] = Convert.ToInt32(obiadInni.Text.ToString());
+                if (kolacjaInni.Text == "")
+                    tab1[8] = 0;
+                else tab1[8] = Convert.ToInt32(kolacjaInni.Text.ToString());
+
+                data = Convert.ToDateTime(kalendarz.SelectedDate.ToString());
+                switch (data.CompareTo(DateTime.Today))
+                {
+                    case 1:
+                        MessageBox.Show("Wybrana data jest późniejsza od obecnej.");
+                        break;
+                    case 0:
+                        if (!istnieje(data))
+                            dodaj_do_bazy(tab, data);
+                        break;
+                    case -1:
+                        break;
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Zły format danych lub nie wybrano daty.");
+                return;
+            }
         }
 
         /*private void Button_Click(object sender, RoutedEventArgs e)

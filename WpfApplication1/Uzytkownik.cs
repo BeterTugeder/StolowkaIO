@@ -76,26 +76,31 @@ namespace Stolowka
             return hex;
         }
 
-        public void logowanie(string haslo)
+        public bool logowanie(string haslo)
         {
             haslo = GetSHA512(haslo);
 
             Console.WriteLine(haslo);
-
             StolowkaDS ds = new StolowkaDS();
             StolowkaDSTableAdapters.UzytkownicyTableAdapter ad = new StolowkaDSTableAdapters.UzytkownicyTableAdapter();
-
+            bool t;
             ad.Fill(ds.Uzytkownicy);
-
-            DataRow[] dr = ds.Uzytkownicy.Select("login = '" + Login + "' AND haslo = '" + haslo + "'");
+            DataRow[] dr = ds.Uzytkownicy.Select("login = '" + Login + "' AND haslo = '" + haslo + "' AND typ_konta = 1" );
             if (dr.Length > 0)
             {
                 zalogowany = true;
+                t = true;
             }
             else
             {
-                zalogowany = false;
+                t = false;
+                DataRow[] drr = ds.Uzytkownicy.Select("login = '" + Login + "' AND haslo = '" + haslo + "' AND typ_konta = 0");
+                if(drr.Length > 0)
+                    zalogowany = true;
+                else
+                    zalogowany = false;
             }
+            return t;
         }
 
         public bool istnieje()

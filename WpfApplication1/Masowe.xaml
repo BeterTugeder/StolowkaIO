@@ -3,14 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Masowe" Height="400" Width="300">
     <Grid>
-        <DataGrid x:Name="ListaZasobow" HorizontalAlignment="Left" VerticalAlignment="Top" Height="72" Width="292" Grid.ColumnSpan="2">
-            <DataGrid.Columns>  
-                <DataGridTextColumn x:Name="cNazwa" Binding="{Binding Nazwa}" Header="Nazwa" />
-                <DataGridTextColumn x:Name="cIlosc" Binding="{Binding Ilosc}" Header="Ilość" />
-                <DataGridTextColumn x:Name="cCenaJedn" Binding="{Binding CenaJedn}" Header="Cena Jednostkowa" />
-            </DataGrid.Columns>
+        <DataGrid x:Name="ListaZasobow" HorizontalAlignment="Left" VerticalAlignment="Top" Height="94" Width="282">
         </DataGrid>
-        <Button x:Name="ButtonUsunWybrany" Content="Usuń wybrany" HorizontalAlignment="Left" Margin="100,94,0,0" VerticalAlignment="Top" Width="96" Height="22"/>
+        <Button x:Name="ButtonUsunWybrany" Content="Usuń wybrany" HorizontalAlignment="Left" Margin="100,99,0,0" VerticalAlignment="Top" Width="96" Height="22" Click="ButtonUsunZasob_Click"/>
         <Label Content="nazwa" HorizontalAlignment="Left" Margin="17,121,0,0" VerticalAlignment="Top" Height="32" Width="43"/>
         <Label Content="ilość" HorizontalAlignment="Left" Margin="128,121,0,0" VerticalAlignment="Top" Height="32" Width="33"/>
         <Label Content="cena jedn." HorizontalAlignment="Left" Margin="218,121,0,0" VerticalAlignment="Top" Height="32" Width="64"/>
@@ -19,9 +14,11 @@
         <TextBox x:Name="CenaJednZasobu" HorizontalAlignment="Left" TextAlignment="Center" Height="23" Margin="206,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"/>
         <Button x:Name="ButtonDodajZasob" Content="Dodaj zasób" HorizontalAlignment="Left" Margin="103,187,0,0" VerticalAlignment="Top" Width="93" Height="23" Click="ButtonDodajZasob_Click"/>
         <Label Content="czas trwania&#xD;&#xA;imprezy (h)" HorizontalAlignment="Left" Margin="0,224,0,0" VerticalAlignment="Top" Height="41" Width="74"/>
-        <TextBox x:Name="CzasTrwania" HorizontalAlignment="Left" TextAlignment="Center" Height="23" Margin="103,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="93"/>
+        <TextBox x:Name="CzasTrwania" HorizontalAlignment="Left" TextAlignment="Center" Height="24" Margin="84,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35"/>
         <Label Content="koszt&#xD;&#xA;całkowity" HorizontalAlignment="Left" Margin="0,318,0,0" VerticalAlignment="Top" Height="42" Width="60"/>
-        <TextBlock x:Name="KosztCalkowity" HorizontalAlignment="Left" TextAlignment="Center" Height="23" Margin="103,337,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="93"/>
+        <TextBlock x:Name="KosztCalkowity" HorizontalAlignment="Left" TextAlignment="Center" Height="30" Margin="103,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="93"/>
         <Button x:Name="ButtonObliczKoszt" Content="Oblicz koszt" HorizontalAlignment="Left" Margin="103,286,0,0" VerticalAlignment="Top" Width="93" Height="23" Click="ButtonObliczKoszt_Click"/>
+        <Label Content="Koszt wynajmu&#xD;&#xA;za 1h" HorizontalAlignment="Left" Margin="136,224,0,0" VerticalAlignment="Top" Height="41" Width="90"/>
+        <TextBox x:Name="Za_godzine" HorizontalAlignment="Left" TextAlignment="Center" Height="24" Margin="226,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66"/>
     </Grid>
 </Window>
