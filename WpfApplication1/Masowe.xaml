@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Masowe" Height="400" Width="300">
     <Grid>
-        <DataGrid x:Name="ListaZasobow" HorizontalAlignment="Left" VerticalAlignment="Top" Height="94" Width="282">
+        <DataGrid x:Name="ListaZasobow" HorizontalAlignment="Left" VerticalAlignment="Top" Height="94" Width="282" CanUserAddRows="false">
         </DataGrid>
         <Button x:Name="ButtonUsunWybrany" Content="Usuń wybrany" HorizontalAlignment="Left" Margin="100,99,0,0" VerticalAlignment="Top" Width="96" Height="22" Click="ButtonUsunZasob_Click"/>
         <Label Content="nazwa" HorizontalAlignment="Left" Margin="17,121,0,0" VerticalAlignment="Top" Height="32" Width="43"/>
