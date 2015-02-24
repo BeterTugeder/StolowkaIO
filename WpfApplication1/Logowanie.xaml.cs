@@ -25,16 +25,25 @@ namespace Stolowka
         bool typ;
         StolowkaDS ds;
         StolowkaDSTableAdapters.RaportTableAdapter adR;
+
         StolowkaDSTableAdapters.Raport_potrawyTableAdapter adRP;
         StolowkaDSTableAdapters.PotrawyTableAdapter adP;
+
+        StolowkaDSTableAdapters.Raport_osobyTableAdapter adRO;
+        StolowkaDSTableAdapters.Osoby_korzystajaceTableAdapter adOK;
+
         public Logowanie(bool typ)
         {
             InitializeComponent();
             this.typ = typ;
             this.ds = new StolowkaDS();
             adR = new StolowkaDSTableAdapters.RaportTableAdapter();
+
             adRP = new StolowkaDSTableAdapters.Raport_potrawyTableAdapter();
             adP = new StolowkaDSTableAdapters.PotrawyTableAdapter();
+
+            adRO = new StolowkaDSTableAdapters.Raport_osobyTableAdapter();
+            adOK = new StolowkaDSTableAdapters.Osoby_korzystajaceTableAdapter();
             Data.Text = DateTime.Today.Date.ToString();
         }
 
@@ -48,17 +57,25 @@ namespace Stolowka
                 return false;
         }
 
-        public void dodaj_do_bazy(string[] tab, DateTime data)
+        public void dodaj_do_bazy(string[] tab, int[] tab1, DateTime data)
         {
             try
             {
+                string korzystajacy;
+                
                 adR.Insert(data);
                 adR.Fill(ds.Raport);
+
                 adRP.Fill(ds.Raport_potrawy);
                 adP.Fill(ds.Potrawy);
+
+                adRO.Fill(ds.Raport_osoby);
+                adOK.Fill(ds.Osoby_korzystajace);
+
                 byte typ;
                 int rR = ds.Raport.Max(x => x.raport_id);
-                int rP;
+                int rP, Ok;
+
                 for (int i = 0; i < 12; i++)
                 {
                     if (tab[i] != "")
@@ -75,14 +92,29 @@ namespace Stolowka
                         adRP.Fill(ds.Raport_potrawy);
                     }
                 }
-                MessageBox.Show("Pomyślnie dodano do bazy.");
+
+                for (int j = 0; j < 9; j++)
+                {
+                    korzystajacy = "Wychowankow";
+                    if (j >= 3 && j < 6)
+                        korzystajacy = "Personelu";
+                    else if (j >= 5)
+                        korzystajacy = "Inni";
+                    adOK.Insert(korzystajacy, tab1[j].ToString());
+                    adOK.Fill(ds.Osoby_korzystajace);
+                    Ok = ds.Osoby_korzystajace.Max(z => z.osoby_id);
+                    adRO.Insert(rR, Ok);
+
+                }
+
+                    MessageBox.Show("Pomyślnie dodano do bazy.");
             }
             catch
             {
                 MessageBox.Show("Błąd dodawania do bazy.");
             }
-         
         }
+
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -186,7 +218,7 @@ namespace Stolowka
                         break;
                     case 0:
                         if (!istnieje(data))
-                            dodaj_do_bazy(tab, data);
+                            dodaj_do_bazy(tab, tab1, data);
                         break;
                     case -1:
                         break;
@@ -199,6 +231,8 @@ namespace Stolowka
                 return;
             }
         }
+
+   
 
         /*private void Button_Click(object sender, RoutedEventArgs e)
         {
