@@ -21,7 +21,11 @@ namespace Stolowka
     {
         public MainWindow()
         {
-            InitializeComponent();
+            Logowanie r = new Logowanie(true);
+            r.Show();
+            this.Close();
+            //InitializeComponent();
+            
         }
 
         private void zaloguj(object sender, RoutedEventArgs e)

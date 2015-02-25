@@ -25,27 +25,20 @@ namespace Stolowka
         bool typ;
         StolowkaDS ds;
         StolowkaDSTableAdapters.RaportTableAdapter adR;
-
         StolowkaDSTableAdapters.Raport_potrawyTableAdapter adRP;
         StolowkaDSTableAdapters.PotrawyTableAdapter adP;
-
-        StolowkaDSTableAdapters.Raport_osobyTableAdapter adRO;
-        StolowkaDSTableAdapters.Osoby_korzystajaceTableAdapter adOK;
-
         public Logowanie(bool typ)
         {
             InitializeComponent();
             this.typ = typ;
             this.ds = new StolowkaDS();
             adR = new StolowkaDSTableAdapters.RaportTableAdapter();
-
             adRP = new StolowkaDSTableAdapters.Raport_potrawyTableAdapter();
             adP = new StolowkaDSTableAdapters.PotrawyTableAdapter();
-
-            adRO = new StolowkaDSTableAdapters.Raport_osobyTableAdapter();
-            adOK = new StolowkaDSTableAdapters.Osoby_korzystajaceTableAdapter();
             Data.Text = DateTime.Today.Date.ToString();
+            ButtonImportuj.Click += ButtonImportuj_Click;
         }
+        DateTime date;
 
         public bool istnieje(DateTime d)
         {
@@ -57,25 +50,17 @@ namespace Stolowka
                 return false;
         }
 
-        public void dodaj_do_bazy(string[] tab, int[] tab1, DateTime data)
+        public void dodaj_do_bazy(string[] tab, DateTime data)
         {
             try
             {
-                string korzystajacy;
-                
                 adR.Insert(data);
                 adR.Fill(ds.Raport);
-
                 adRP.Fill(ds.Raport_potrawy);
                 adP.Fill(ds.Potrawy);
-
-                adRO.Fill(ds.Raport_osoby);
-                adOK.Fill(ds.Osoby_korzystajace);
-
                 byte typ;
                 int rR = ds.Raport.Max(x => x.raport_id);
-                int rP, Ok;
-
+                int rP;
                 for (int i = 0; i < 12; i++)
                 {
                     if (tab[i] != "")
@@ -92,29 +77,22 @@ namespace Stolowka
                         adRP.Fill(ds.Raport_potrawy);
                     }
                 }
-
-                for (int j = 0; j < 9; j++)
-                {
-                    korzystajacy = "Wychowankow";
-                    if (j >= 3 && j < 6)
-                        korzystajacy = "Personelu";
-                    else if (j >= 5)
-                        korzystajacy = "Inni";
-                    adOK.Insert(korzystajacy, tab1[j].ToString());
-                    adOK.Fill(ds.Osoby_korzystajace);
-                    Ok = ds.Osoby_korzystajace.Max(z => z.osoby_id);
-                    adRO.Insert(rR, Ok);
-
-                }
-
-                    MessageBox.Show("Pomyślnie dodano do bazy.");
+                MessageBox.Show("Pomyślnie dodano do bazy.");
             }
             catch
             {
                 MessageBox.Show("Błąd dodawania do bazy.");
             }
+         
         }
-
+        private void Calendar_SelectedDatesChanged(object sender,
+        SelectionChangedEventArgs e)
+        {
+            if (kalendarz.SelectedDate.HasValue)
+            {
+                this.date = kalendarz.SelectedDate.Value;
+            }
+        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -144,6 +122,68 @@ namespace Stolowka
                 MessageBox.Show("Przykro mi, nie masz uprawnień administratora.");
             }
             
+        }
+
+        private void ButtonImportuj_Click(object sender, RoutedEventArgs e)
+        {
+            Data.Text = date.ToShortDateString();
+
+            if (!this.istnieje(date))
+            {
+                return;
+            }
+
+            adR.Fill(ds.Raport);
+            DataRow drR = ds.Raport.Select("data = '" + date + "'").First();
+
+            DataRow[] drRP = ds.Raport_potrawy.Select("raport_id = '" + drR[0] + "'");
+
+            string[] tab = new string[12];
+            int[] tab1 = new int[9];
+            int s = 0;
+            int o = 4;
+            int k = 8;
+
+            foreach (DataRow r in drRP)
+            {
+                DataRow p = ds.Potrawy.Select("potrawa_id = '" + r[0] + "'").First();
+                switch ((int)p[2])
+                {
+                    case 0:
+                        tab[s++] = (string)p[1];
+                        break;
+                    case 1:
+                        tab[o++] = (string)p[1];
+                        break;
+                    case 2:
+                        tab[k++] = (string)p[1];
+                        break;
+                }
+            }
+
+            Sniadanie1.Text = tab[0];
+            Sniadanie2.Text = tab[1];
+            Sniadanie3.Text = tab[2];
+            Sniadanie4.Text = tab[3];
+            Obiad1.Text = tab[4];
+            Obiad2.Text = tab[5];
+            Obiad3.Text = tab[6];
+            Obiad4.Text = tab[7];
+            Kolacja1.Text = tab[8];
+            Kolacja2.Text = tab[9];
+            Kolacja3.Text = tab[10];
+            Kolacja4.Text = tab[11];
+
+
+            /*sniadanieWychow.Text = tab1[0];
+            obiadWychow.Text = tab1[1];
+            kolacjaWychow.Text = tab1[2];
+            sniadaniePersonel.Text = tab1[3];
+            obiadPersonel.Text = tab1[4];
+            kolacjaPersonel.Text = tab1[5];
+            sniadanieInni.Text = tab1[6];
+            obiadInni.Text = tab1[7];
+            kolacjaInni.Text = tab1[8];*/
         }
 
         private void ButtonMasowki_Click(object sender, RoutedEventArgs e)
@@ -218,7 +258,7 @@ namespace Stolowka
                         break;
                     case 0:
                         if (!istnieje(data))
-                            dodaj_do_bazy(tab, tab1, data);
+                            dodaj_do_bazy(tab, data);
                         break;
                     case -1:
                         break;
@@ -231,8 +271,6 @@ namespace Stolowka
                 return;
             }
         }
-
-   
 
         /*private void Button_Click(object sender, RoutedEventArgs e)
         {

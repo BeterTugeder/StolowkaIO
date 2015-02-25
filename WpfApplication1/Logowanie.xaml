@@ -3,49 +3,49 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Stolowka" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Stolowka.Logowanie"
         Title="Stołówka" Height="690" Width="535">
-    <Grid Margin="0,0,-8,-30">
+    <Grid>
         <TextBlock x:Name="Data" HorizontalAlignment="Left" Height="23" Margin="259,0,0,0" FontSize="16" TextWrapping="Wrap" Text="Dnia roku" VerticalAlignment="Top" Width="94"/>
         <TextBlock HorizontalAlignment="Left" Padding="0,41" Height="85" Margin="0,23,0,0" TextWrapping="Wrap" Text="    Jadłospis" VerticalAlignment="Top" Width="78"/>
         <TextBlock HorizontalAlignment="Left" Height="18" FontSize="12" Margin="181,108,0,0" TextWrapping="Wrap" Text="Liczba osób korzystających z wyżywienia" VerticalAlignment="Top" Width="215"/>
         <TextBlock HorizontalAlignment="Left" Height="17" TextAlignment="Center" FontSize="12" Margin="78,23,0,0" TextWrapping="Wrap" Text="Śniadanie" VerticalAlignment="Top" Width="149"/>
         <TextBlock HorizontalAlignment="Left" Height="17" TextAlignment="Center" FontSize="12" Margin="227,23,0,0" TextWrapping="Wrap" Text="Obiad" VerticalAlignment="Top" Width="149"/>
         <TextBlock HorizontalAlignment="Left" Height="17" TextAlignment="Center" FontSize="12" Margin="375,23,0,0" TextWrapping="Wrap" Text="Kolacja" VerticalAlignment="Top" Width="141"/>
-        <TextBox x:Name="Sniadanie1" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="78,40,0,0" TextWrapping="Wrap" Padding="0,-2" Text="" VerticalAlignment="Top" Width="149"/>
-        <TextBox x:Name="Sniadanie2" Padding="0,-2" HorizontalAlignment="Left" Height="17" TextAlignment="Center" FontSize="12" Margin="78,57,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
-        <TextBox x:Name="Sniadanie3" Padding="0,-2" HorizontalAlignment="Left" Height="17" TextAlignment="Center" FontSize="12" Margin="78,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
-        <TextBox x:Name="Sniadanie4" Padding="0,-2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="78,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
-        <TextBox x:Name="Obiad1" Padding="0,-2"  HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="227,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
-        <TextBox x:Name="Obiad2" Padding="0,-2"  HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="227,57,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
-        <TextBox x:Name="Obiad3" Padding="0,-2"  HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="227,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
-        <TextBox x:Name="Obiad4" Padding="0,-2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="227,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
-        <TextBox x:Name="Kolacja1" Padding="0,-2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="376,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
-        <TextBox x:Name="Kolacja2" Padding="0,-2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="376,57,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
-        <TextBox x:Name="Kolacja3" Padding="0,-2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="376,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
-        <TextBox x:Name="Kolacja4" Padding="0,-2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="376,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
+        <TextBox x:Name="Sniadanie1" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="78,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="Sniadanie2" HorizontalAlignment="Left" Height="17" TextAlignment="Center" FontSize="10" Margin="78,57,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="Sniadanie3" HorizontalAlignment="Left" Height="17" TextAlignment="Center" FontSize="10" Margin="78,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="Sniadanie4" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="78,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="Obiad1" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="227,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="Obiad2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="227,57,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="Obiad3" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="227,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="Obiad4" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="227,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="Kolacja1" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="376,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
+        <TextBox x:Name="Kolacja2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="376,57,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
+        <TextBox x:Name="Kolacja3" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="376,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
+        <TextBox x:Name="Kolacja4" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="376,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
         <TextBlock HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="0,124,0,0" TextWrapping="Wrap" Text="wychowanków" VerticalAlignment="Top" Width="78"/>
         <TextBlock HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="0,141,0,0" TextWrapping="Wrap" Text="personelu" VerticalAlignment="Top" Width="78"/>
         <TextBlock HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="0,158,0,0" TextWrapping="Wrap" Text="innych osób" VerticalAlignment="Top" Width="78"/>
         <TextBlock HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="0,175,0,0" TextWrapping="Wrap" Text="Razem" VerticalAlignment="Top" Width="78"/>
-        <TextBox x:Name="sniadanieWychow" Padding="0,-2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="78,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
-        <TextBox x:Name="sniadaniePersonel" Padding="0,-2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="78,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
-        <TextBox x:Name="sniadanieInni" Padding="0,-2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="78,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="sniadanieWychow" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="78,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149" TextChanged="sniadanieWychow_TextChanged"/>
+        <TextBox x:Name="sniadaniePersonel" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="78,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="sniadanieInni" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="78,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
         <TextBlock x:Name="sniadanieSuma" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="78,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
-        <TextBox x:Name="obiadWychow" Padding="0,-2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="227,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
-        <TextBox x:Name="obiadPersonel" Padding="0,-2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="227,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
-        <TextBox x:Name="obiadInni" Padding="0,-2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="227,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="obiadWychow" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="227,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="obiadPersonel" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="227,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="obiadInni" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="227,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
         <TextBlock x:Name="obiadSuma" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="227,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
-        <TextBox x:Name="kolacjaWychow" Padding="0,-2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="375,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
-        <TextBox x:Name="kolacjaPersonel" Padding="0,-2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="375,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141" RenderTransformOrigin="0.511,0.824"/>
-        <TextBox x:Name="kolacjaInni" Padding="0,-2" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="12" Margin="376,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.511,0.824"/>
+        <TextBox x:Name="kolacjaWychow" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="375,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
+        <TextBox x:Name="kolacjaPersonel" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="375,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141" RenderTransformOrigin="0.511,0.824"/>
+        <TextBox x:Name="kolacjaInni" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="376,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.511,0.824"/>
         <TextBlock x:Name="kolacjaSuma" HorizontalAlignment="Left"  Height="17" TextAlignment="Center" FontSize="10" Margin="376,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141" RenderTransformOrigin="0.511,0.824"/>
         <DataGrid HorizontalAlignment="Left" Margin="0,192,0,0" VerticalAlignment="Top" RenderTransformOrigin="-5.083,-0.615" Height="242" Width="516" SelectionChanged="DataGrid_SelectionChanged"/>
         <TextBlock HorizontalAlignment="Left" Height="23" Margin="0,434,0,0" TextWrapping="Wrap" Text="Razem" VerticalAlignment="Top" Width="132"/>
         <TextBlock HorizontalAlignment="Left" Height="23" Margin="0,457,0,0" TextWrapping="Wrap" Text="Średni koszt na osobę" VerticalAlignment="Top" Width="132"/>
         <TextBlock x:Name="Suma" HorizontalAlignment="Left" Height="23" Margin="132,434,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="124"/>
         <TextBlock x:Name="kosztNaOsobe" HorizontalAlignment="Left" Height="23" Margin="132,457,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="124"/>
-        <Button Content="Importuj" HorizontalAlignment="Left" Margin="211,485,0,0" VerticalAlignment="Top" Width="119" Height="29"/>
+        <Button x:Name="ButtonImportuj" Content="Importuj" HorizontalAlignment="Left" Margin="211,485,0,0" VerticalAlignment="Top" Width="119" Height="29"/>
         <Button Content="Zapisz" HorizontalAlignment="Left" Margin="211,550,0,0" VerticalAlignment="Top" Width="119" Height="29" Click="zapisz"/>
-        <Calendar x:Name="kalendarz" HorizontalAlignment="Left" Margin="0,480,0,0" VerticalAlignment="Top" Height="166" Width="178"/>
+        <Calendar x:Name="kalendarz" HorizontalAlignment="Left" Margin="0,480,0,0" VerticalAlignment="Top" Height="166" Width="178" SelectedDatesChanged="Calendar_SelectedDatesChanged"/>
         <Button Content="Wyświetl raport" HorizontalAlignment="Left" Margin="367,485,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="2.907,1.318" Height="29" Click="Button_Click_1"/>
         <Button x:Name="ButtonMasowki" Content="Imprezy masowe" HorizontalAlignment="Left" Margin="367,550,0,0" VerticalAlignment="Top" Width="150" Height="29" Click="ButtonMasowki_Click"/>
         <Button Content="Wyloguj" HorizontalAlignment="Left" Margin="367,617,0,0" VerticalAlignment="Top" Width="150" Height="29" Click="ButtonWyloguj_Click"/>
