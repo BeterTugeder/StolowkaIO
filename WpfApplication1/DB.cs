@@ -91,6 +91,5 @@ namespace Stolowka
                 komm = pth + "\n" + ex.Message;
             }
         }
-
     }
 }

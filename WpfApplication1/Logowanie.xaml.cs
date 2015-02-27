@@ -120,10 +120,7 @@ namespace Stolowka
             {
                 MessageBox.Show("Bład uaktualniania bazy.");
             }
-
-
         }
-
 
         public void dodaj_do_bazy(string[] tab, int[] tab1, DateTime data)
         {
@@ -163,8 +160,6 @@ namespace Stolowka
                     adOK.Fill(ds.Osoby_korzystajace);
                     rOK = ds.Osoby_korzystajace.Max(z => z.osoby_id);
                     adRO.Insert(rR, rOK);
-                    
-
                 }
                     adRP.Fill(ds.Raport_potrawy);
                     adRO.Fill(ds.Raport_osoby);
@@ -212,7 +207,6 @@ namespace Stolowka
             {
                 MessageBox.Show("Przykro mi, nie masz uprawnień administratora.");
             }
-            
         }
 
         private void ButtonImportuj_Click(object sender, RoutedEventArgs e)
@@ -287,7 +281,6 @@ namespace Stolowka
                             tab1[i++] = Convert.ToInt32(os[2]);
                             break;
                     }
-
                 }
 
                 sniadanieWychow.Text = tab1[0].ToString();
@@ -303,7 +296,6 @@ namespace Stolowka
                 sniadanieSuma.Text = (tab1[0] + tab1[3] + tab1[6]).ToString();
                 obiadSuma.Text = (tab1[1] + tab1[4] + tab1[7]).ToString();
                 kolacjaSuma.Text = (tab1[2] + tab1[5] + tab1[8]).ToString();
-
             }
             catch
             {
@@ -388,7 +380,6 @@ namespace Stolowka
                             uaktualnij_w_bazie(tab, tab1, data);
                         break;
                 }
-
             }
             catch
             {
@@ -396,102 +387,5 @@ namespace Stolowka
                 return;
             }
         }
-
-        /*private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Logi tmp = new Logi();
-            tmp.TypOperacji = "Dodawanie użytkownika";
-            tmp.Uzytkownik = new Uzytkownik();
-            tmp.Uzytkownik.Id = 0;
-            tmp.DataOperacji = DateTime.Now;
-            try
-            {
-                tmp.dodawanie();
-                tmp.wyswietlanie();
-            }
-            catch (Exception ex)
-            {
-                komm.Text = ex.Message;
-            }*/
     }
-
-    //http://www.microsoft.com/en-us/download/details.aspx?id=14839
-
-    /*private void Button_Click_1(object sender, RoutedEventArgs e)
-    {
-        Logi tmp = new Logi();
-        komm.Text = "";
-        foreach (StolowkaDS.LogiRow r in tmp.wyswietlanie())
-        {
-            komm.Text += r.Operacja;
-        }*/
-    //d:\Dropbox\IO\Projekt\StolowkaIO\WpfApplication1\WDOW.DBF
-    //D:\Dropbox\IO\Projekt\StolowkaIO\WpfApplication1\WDOW.DBF
-    //<<<<<<< HEAD
-    /* string pth = sciezka.Text;
-=======
-     /*string pth = sciezka.Text;
->>>>>>> 756068b6994e0cac9e941c59a1ab2bf7b0bdbf05
-     try
-     {
-         string connStr = @"Provider=vfpoledb;Data Source=" + pth.Substring(0, pth.LastIndexOf("\\")) + ";Collating Sequence=machine;";
-         OleDbConnection conn = new OleDbConnection(connStr);
-         conn.Open();
-
-         string cmd_string = "select * from " + pth.Substring(0, pth.LastIndexOf("."));
-         OleDbDataAdapter da = new OleDbDataAdapter(cmd_string, conn);
-         DataSet ds = new DataSet();
-         da.Fill(ds);
-
-         DataTable dt = ds.Tables[0];
-
-         komm.Text = "";
-         foreach (DataRow dr in dt.AsEnumerable())
-         {
-             komm.Text += dr[5] + "\n";
-         }
-     }
-     catch (Exception ex)
-     {
-         komm.Text = pth + "\n" + ex.Message;
-<<<<<<< HEAD
-     }
-            
-=======
-     }*/
-    /*
->>>>>>> 756068b6994e0cac9e941c59a1ab2bf7b0bdbf05
-        string connStr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + ofdDBF.FileName.Substring(0, ofdDBF.FileName.LastIndexOf("\\")) + ";Extended Properties=dBASE IV;"; 
- 
-        OleDbConnection conn = new OleDbConnection(connStr); 
-        conn.Open(); 
- 
-        string cmd_string = "select * from " + ofdDBF.SafeFileName.Substring(0, ofdDBF.SafeFileName.IndexOf(".")); 
-        MessageBox.Show(cmd_string); 
-        OleDbDataAdapter da = new OleDbDataAdapter(cmd_string, conn); 
-        DataSet ds = new DataSet(); 
-        da.Fill(ds); 
-        dgvImport.DataSource = ds.Tables[0]; 
-<<<<<<< HEAD
-      */
-    //=======
-
-    /*
-    Uzytkownik u = new Uzytkownik();
-    u.Login = "admin";
-    u.logowanie("admin");
-    Console.WriteLine( u.Zalogowany.ToString() );
-
-    Uzytkownik uu = new Uzytkownik();
-    uu.Login = "test";
-    uu.Imie = "Testowy";
-    uu.Nazwisko = "Tesotwe";
-    uu.Typ = false;
-    uu.dodawanie("testowe haslo");
-
-    uzytkownicy.ItemsSource = uu.lista().AsDataView();
->>>>>>> 756068b6994e0cac9e941c59a1ab2bf7b0bdbf05
-}*/
-
-    //}
 }
