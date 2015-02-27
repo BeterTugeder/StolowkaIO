@@ -92,5 +92,16 @@ namespace Stolowka
             }
         }
 
+        /*public bool checkDate(DateTime date)
+        {
+            StolowkaDS DS = new StolowkaDS();
+            StolowkaDSTableAdapters.WdowTableAdapter a = new StolowkaDSTableAdapters.WdowTableAdapter();
+            a.Fill(DS.Wdow);
+
+            DS.Wdow.Rows.Find("");
+
+            return false;
+        }*/
+
     }
 }

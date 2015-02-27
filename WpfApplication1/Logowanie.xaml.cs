@@ -27,6 +27,9 @@ namespace Stolowka
         StolowkaDSTableAdapters.RaportTableAdapter adR;
         StolowkaDSTableAdapters.Raport_potrawyTableAdapter adRP;
         StolowkaDSTableAdapters.PotrawyTableAdapter adP;
+
+        DateTime date;
+
         public Logowanie(bool typ)
         {
             InitializeComponent();
@@ -87,8 +90,12 @@ namespace Stolowka
         private void Calendar_SelectedDatesChanged(object sender,
         SelectionChangedEventArgs e)
         {
-            // ... Get reference.
-            var calendar = sender as Calendar;
+            // ... See if a date is selected.
+            if (kalendarz.SelectedDate.HasValue)
+            {
+                // ... Display SelectedDate in Title.
+                this.date = kalendarz.SelectedDate.Value;
+            }
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -121,8 +128,66 @@ namespace Stolowka
         }
 
         private void ButtonImportuj_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(kalendarz.DisplayDate.ToString());
+        {            
+            Data.Text = date.ToShortDateString();
+
+            if (!this.istnieje(date))
+            {
+                MessageBox.Show("Taki chuj");
+                return;
+            }
+
+            adR.Fill(ds.Raport);
+            DataRow drR = ds.Raport.Select("data = '" + date + "'").First();
+
+            DataRow[] drRP = ds.Raport_potrawy.Select("raport_id = '" + drR[0] + "'");
+
+            string[] tab = new string[12];
+            int[] tab1 = new int[9];
+            int s = 0;
+            int o = 4;
+            int k = 8;
+
+            foreach (DataRow r in drRP)
+            {
+                DataRow p = ds.Potrawy.Select("potrawa_id = '" + r[0] + "'").First();
+                switch ((int)p[2])
+                {
+                    case 0:
+                        tab[s++] = (string)p[1];
+                        break;
+                    case 1:
+                        tab[o++] = (string)p[1];
+                        break;
+                    case 2:
+                        tab[k++] = (string)p[1];
+                        break;
+                }
+            }
+
+            Sniadanie1.Text = tab[0];
+            Sniadanie2.Text = tab[1];
+            Sniadanie3.Text = tab[2];
+            Sniadanie4.Text = tab[3];
+            Obiad1.Text = tab[4];
+            Obiad2.Text = tab[5];
+            Obiad3.Text = tab[6];
+            Obiad4.Text = tab[7];
+            Kolacja1.Text = tab[8];
+            Kolacja2.Text = tab[9];
+            Kolacja3.Text = tab[10];
+            Kolacja4.Text = tab[11];
+
+
+            /*sniadanieWychow.Text = tab1[0];
+            obiadWychow.Text = tab1[1];
+            kolacjaWychow.Text = tab1[2];
+            sniadaniePersonel.Text = tab1[3];
+            obiadPersonel.Text = tab1[4];
+            kolacjaPersonel.Text = tab1[5];
+            sniadanieInni.Text = tab1[6];
+            obiadInni.Text = tab1[7];
+            kolacjaInni.Text = tab1[8];*/
         }
 
         private void ButtonMasowki_Click(object sender, RoutedEventArgs e)
@@ -209,6 +274,11 @@ namespace Stolowka
                 MessageBox.Show("Zły format danych lub nie wybrano daty.");
                 return;
             }
+        }
+
+        private void ButtonImportuj_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
 
         /*private void Button_Click(object sender, RoutedEventArgs e)

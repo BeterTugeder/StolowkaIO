@@ -43,7 +43,7 @@
         <TextBlock HorizontalAlignment="Left" Height="23" Margin="0,457,0,0" TextWrapping="Wrap" Text="Średni koszt na osobę" VerticalAlignment="Top" Width="132"/>
         <TextBlock x:Name="Suma" HorizontalAlignment="Left" Height="23" Margin="132,434,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="124"/>
         <TextBlock x:Name="kosztNaOsobe" HorizontalAlignment="Left" Height="23" Margin="132,457,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="124"/>
-        <Button x:Name="ButtonImportuj" Content="Importuj" HorizontalAlignment="Left" Margin="211,485,0,0" VerticalAlignment="Top" Width="119" Height="29"/>
+        <Button x:Name="ButtonImportuj" Content="Importuj" HorizontalAlignment="Left" Margin="211,485,0,0" VerticalAlignment="Top" Width="119" Height="29" Click="ButtonImportuj_Click_1"/>
         <Button Content="Zapisz" HorizontalAlignment="Left" Margin="211,550,0,0" VerticalAlignment="Top" Width="119" Height="29" Click="zapisz"/>
         <Calendar x:Name="kalendarz" HorizontalAlignment="Left" Margin="0,480,0,0" VerticalAlignment="Top" Height="166" Width="178" SelectedDatesChanged="Calendar_SelectedDatesChanged"/>
         <Button Content="Wyświetl raport" HorizontalAlignment="Left" Margin="367,485,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="2.907,1.318" Height="29" Click="Button_Click_1"/>
