@@ -25,16 +25,26 @@ namespace Stolowka
         bool typ;
         StolowkaDS ds;
         StolowkaDSTableAdapters.RaportTableAdapter adR;
+
         StolowkaDSTableAdapters.Raport_potrawyTableAdapter adRP;
         StolowkaDSTableAdapters.PotrawyTableAdapter adP;
+
+        StolowkaDSTableAdapters.Raport_osobyTableAdapter adRO;
+        StolowkaDSTableAdapters.Osoby_korzystajaceTableAdapter adOK;
+
         public Logowanie(bool typ)
         {
             InitializeComponent();
             this.typ = typ;
             this.ds = new StolowkaDS();
             adR = new StolowkaDSTableAdapters.RaportTableAdapter();
+
             adRP = new StolowkaDSTableAdapters.Raport_potrawyTableAdapter();
             adP = new StolowkaDSTableAdapters.PotrawyTableAdapter();
+
+            adRO = new StolowkaDSTableAdapters.Raport_osobyTableAdapter();
+            adOK = new StolowkaDSTableAdapters.Osoby_korzystajaceTableAdapter();
+
             Data.Text = DateTime.Today.Date.ToString();
             ButtonImportuj.Click += ButtonImportuj_Click;
         }
@@ -50,7 +60,72 @@ namespace Stolowka
                 return false;
         }
 
-        public void dodaj_do_bazy(string[] tab, DateTime data)
+        public void uaktualnij_w_bazie(string[] tab, int[] tab1, DateTime data)
+        {
+            try
+            {
+                int s = 0, o = 4, k = 8;
+                int w = 0, p = 3 ,i = 6;
+                string nazwa = "";
+                adR.Fill(ds.Raport);
+                adRP.Fill(ds.Raport_potrawy);
+                adP.Fill(ds.Potrawy);
+                adRO.Fill(ds.Raport_osoby);
+                adOK.Fill(ds.Osoby_korzystajace);
+
+                DataRow drR = ds.Raport.Select("data = '" + data + "'").First();
+                DataRow[] drRP = ds.Raport_potrawy.Select("raport_id = '" + drR[0] + "'");
+                DataRow[] drRO = ds.Raport_osoby.Select("raport_id = '" + drR[0] + "'");
+                foreach (DataRow r in drRP)
+                {
+                    DataRow rP = ds.Potrawy.Select("potrawa_id = '" + r[0] + "'").First();
+                    switch (Convert.ToInt16(rP[2]))
+                    {
+                        case 0:
+                            nazwa = tab[s++];
+                            break;
+                        case 1:
+                            nazwa = tab[o++];
+                            break;
+                        case 2:
+                            nazwa = tab[k++];
+                            break;
+                    }
+                    rP[1] = nazwa;
+                    adP.Update(rP);
+                }
+                adP.Fill(ds.Potrawy);
+
+                foreach (DataRow r in drRO)
+                {
+                    DataRow rOK = ds.Osoby_korzystajace.Select("osoby_id = '" + r[1]+ "'").First();
+                    switch (rOK[1].ToString())
+                    {
+                        case "Wychowankow":
+                            rOK[2] = tab1[w++];
+                            break;
+                        case "Personelu":
+                            rOK[2] = tab1[p++];
+                            break;
+                        case "Innych":
+                            rOK[2] = tab1[i++];
+                            break;
+                    }
+                    adOK.Update(rOK);
+                }
+                adOK.Fill(ds.Osoby_korzystajace);
+                MessageBox.Show("Uaktaulniono dane.");
+            }
+            catch
+            {
+                MessageBox.Show("Bład uaktualniania bazy.");
+            }
+
+
+        }
+
+
+        public void dodaj_do_bazy(string[] tab, int[] tab1, DateTime data)
         {
             try
             {
@@ -58,26 +133,42 @@ namespace Stolowka
                 adR.Fill(ds.Raport);
                 adRP.Fill(ds.Raport_potrawy);
                 adP.Fill(ds.Potrawy);
+                adRO.Fill(ds.Raport_osoby);
+                adOK.Fill(ds.Osoby_korzystajace);
+                string nazwa;
                 byte typ;
                 int rR = ds.Raport.Max(x => x.raport_id);
-                int rP;
+                int rP, rOK;
                 for (int i = 0; i < 12; i++)
                 {
-                    if (tab[i] != "")
-                    {
-                        typ = 0;
-                        if (i <= 7 && i > 3)
-                            typ = 1;
-                        else if (i <= 11 && i > 7)
-                            typ = 2;
-                        adP.Insert(tab[i], typ);
-                        adP.Fill(ds.Potrawy);
-                        rP = ds.Potrawy.Max(y => y.potrawa_id);
-                        adRP.Insert(rP, rR);
-                        adRP.Fill(ds.Raport_potrawy);
-                    }
+                    typ = 0;
+                    if (i <= 7 && i > 3)
+                        typ = 1;
+                    else if (i <= 11 && i > 7)
+                        typ = 2;
+                    adP.Insert(tab[i], typ);
+                    adP.Fill(ds.Potrawy);
+                    rP = ds.Potrawy.Max(y => y.potrawa_id);
+                    adRP.Insert(rP, rR);
+                    
                 }
-                MessageBox.Show("Pomyślnie dodano do bazy.");
+                for (int j = 0; j < 9; j++)
+                {
+                    nazwa = "Wychowankow";
+                    if (j >= 3 && j < 6)
+                        nazwa = "Personelu";
+                    else if (j >= 6)
+                        nazwa = "Innych";
+                    adOK.Insert(nazwa, tab1[j]);
+                    adOK.Fill(ds.Osoby_korzystajace);
+                    rOK = ds.Osoby_korzystajace.Max(z => z.osoby_id);
+                    adRO.Insert(rR, rOK);
+                    
+
+                }
+                    adRP.Fill(ds.Raport_potrawy);
+                    adRO.Fill(ds.Raport_osoby);
+                    MessageBox.Show("Pomyślnie dodano do bazy.");
             }
             catch
             {
@@ -126,64 +217,98 @@ namespace Stolowka
 
         private void ButtonImportuj_Click(object sender, RoutedEventArgs e)
         {
-            Data.Text = date.ToShortDateString();
-
-            if (!this.istnieje(date))
+            try
             {
-                return;
-            }
-
-            adR.Fill(ds.Raport);
-            DataRow drR = ds.Raport.Select("data = '" + date + "'").First();
-
-            DataRow[] drRP = ds.Raport_potrawy.Select("raport_id = '" + drR[0] + "'");
-
-            string[] tab = new string[12];
-            int[] tab1 = new int[9];
-            int s = 0;
-            int o = 4;
-            int k = 8;
-
-            foreach (DataRow r in drRP)
-            {
-                DataRow p = ds.Potrawy.Select("potrawa_id = '" + r[0] + "'").First();
-                switch ((int)p[2])
+                date = Convert.ToDateTime(kalendarz.SelectedDate.ToString());
+                if (!this.istnieje(date))
                 {
-                    case 0:
-                        tab[s++] = (string)p[1];
-                        break;
-                    case 1:
-                        tab[o++] = (string)p[1];
-                        break;
-                    case 2:
-                        tab[k++] = (string)p[1];
-                        break;
+                    MessageBox.Show("W tym dniu nie dodano nic do bazy.");
+                    return;
                 }
+
+                Data.Text = date.ToShortDateString();
+                adR.Fill(ds.Raport);
+                adRP.Fill(ds.Raport_potrawy);
+                adP.Fill(ds.Potrawy);
+                adRO.Fill(ds.Raport_osoby);
+                adOK.Fill(ds.Osoby_korzystajace);
+
+                DataRow drR = ds.Raport.Select("data = '" + date + "'").First();
+
+                DataRow[] drRP = ds.Raport_potrawy.Select("raport_id = '" + drR[0] + "'");
+                DataRow[] drRO = ds.Raport_osoby.Select("raport_id = '" + drR[0] + "'");
+
+                string[] tab = new string[12];
+                int[] tab1 = new int[9];
+                int s = 0, o = 4, k = 8;
+                int w = 0, pe = 3, i = 6;
+
+                foreach (DataRow r in drRP)
+                {
+                    DataRow p = ds.Potrawy.Select("potrawa_id = '" + r[0] + "'").First();
+                    switch (Convert.ToInt16(p[2]))
+                    {
+                        case 0:
+                            tab[s++] = p[1].ToString();
+                            break;
+                        case 1:
+                            tab[o++] = p[1].ToString();
+                            break;
+                        case 2:
+                            tab[k++] = p[1].ToString();
+                            break;
+                    }
+                }
+
+                Sniadanie1.Text = tab[0];
+                Sniadanie2.Text = tab[1];
+                Sniadanie3.Text = tab[2];
+                Sniadanie4.Text = tab[3];
+                Obiad1.Text = tab[4];
+                Obiad2.Text = tab[5];
+                Obiad3.Text = tab[6];
+                Obiad4.Text = tab[7];
+                Kolacja1.Text = tab[8];
+                Kolacja2.Text = tab[9];
+                Kolacja3.Text = tab[10];
+                Kolacja4.Text = tab[11];
+                foreach (DataRow r in drRO)
+                {
+                    DataRow os = ds.Osoby_korzystajace.Select("osoby_id = '" + r[1] + "'").First();
+                    switch (os[1].ToString())
+                    {
+                        case "Wychowankow":
+                            tab1[w++] = Convert.ToInt32(os[2]);
+                            break;
+                        case "Personelu":
+                            tab1[pe++] = Convert.ToInt32(os[2]);
+                            break;
+                        case "Innych":
+                            tab1[i++] = Convert.ToInt32(os[2]);
+                            break;
+                    }
+
+                }
+
+                sniadanieWychow.Text = tab1[0].ToString();
+                obiadWychow.Text = tab1[1].ToString();
+                kolacjaWychow.Text = tab1[2].ToString();
+                sniadaniePersonel.Text = tab1[3].ToString();
+                obiadPersonel.Text = tab1[4].ToString();
+                kolacjaPersonel.Text = tab1[5].ToString();
+                sniadanieInni.Text = tab1[6].ToString();
+                obiadInni.Text = tab1[7].ToString();
+                kolacjaInni.Text = tab1[8].ToString();
+
+                sniadanieSuma.Text = (tab1[0] + tab1[3] + tab1[6]).ToString();
+                obiadSuma.Text = (tab1[1] + tab1[4] + tab1[7]).ToString();
+                kolacjaSuma.Text = (tab1[2] + tab1[5] + tab1[8]).ToString();
+
             }
-
-            Sniadanie1.Text = tab[0];
-            Sniadanie2.Text = tab[1];
-            Sniadanie3.Text = tab[2];
-            Sniadanie4.Text = tab[3];
-            Obiad1.Text = tab[4];
-            Obiad2.Text = tab[5];
-            Obiad3.Text = tab[6];
-            Obiad4.Text = tab[7];
-            Kolacja1.Text = tab[8];
-            Kolacja2.Text = tab[9];
-            Kolacja3.Text = tab[10];
-            Kolacja4.Text = tab[11];
-
-
-            /*sniadanieWychow.Text = tab1[0];
-            obiadWychow.Text = tab1[1];
-            kolacjaWychow.Text = tab1[2];
-            sniadaniePersonel.Text = tab1[3];
-            obiadPersonel.Text = tab1[4];
-            kolacjaPersonel.Text = tab1[5];
-            sniadanieInni.Text = tab1[6];
-            obiadInni.Text = tab1[7];
-            kolacjaInni.Text = tab1[8];*/
+            catch
+            {
+                MessageBox.Show("Błąd importu z bazy danych.");
+            }
         }
 
         private void ButtonMasowki_Click(object sender, RoutedEventArgs e)
@@ -256,11 +381,11 @@ namespace Stolowka
                     case 1:
                         MessageBox.Show("Wybrana data jest późniejsza od obecnej.");
                         break;
-                    case 0:
+                    default:
                         if (!istnieje(data))
-                            dodaj_do_bazy(tab, data);
-                        break;
-                    case -1:
+                            dodaj_do_bazy(tab, tab1, data);
+                        else
+                            uaktualnij_w_bazie(tab, tab1, data);
                         break;
                 }
 
