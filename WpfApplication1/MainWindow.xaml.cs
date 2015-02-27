@@ -34,6 +34,7 @@ namespace Stolowka
             bool typ = log.logowanie(pass.Password);
             if (log.Zalogowany == true)
             {
+                MessageBox.Show("Zalogowano");
                 Logowanie r = new Logowanie(typ);
                 r.Show();
                 this.Close();
